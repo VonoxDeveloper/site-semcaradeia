@@ -1,6 +1,6 @@
 ---
 name: ship-ui
-description: Orquestra todas as skills de design instaladas (design-taste-frontend, high-end-visual-design, impeccable, gpt-taste, animate, apple-design, redesign-existing-projects, imagegen-*, brandkit, etc.) numa ordem única para construir ou redesenhar interfaces de alto nível. Use quando o pedido for construir/redesenhar/polir um site, landing page, portfólio, dashboard, app shell, componente ou fluxo de UI — em qualquer projeto. Não use para tarefas de backend ou não-UI.
+description: Orquestra todas as skills de design instaladas (design-taste-frontend, high-end-visual-design, impeccable, gpt-taste, animate, apple-design, gsap-*, redesign-existing-projects, imagegen-*, brandkit, etc.) numa ordem única para construir ou redesenhar interfaces de alto nível. Use quando o pedido for construir/redesenhar/polir um site, landing page, portfólio, dashboard, app shell, componente ou fluxo de UI — em qualquer projeto. Não use para tarefas de backend ou não-UI.
 ---
 
 # ship-ui — orquestrador de skills de design
@@ -36,6 +36,30 @@ Saída da fase 1: um resumo curto da direção (paleta, tipografia, escala, moti
 - `apple-design` — gestos, spring, materiais translúcidos, momentum, reduced-motion
 - `ask-sonner` — quando/como usar toasts (lib Sonner)
 - `full-output-enforcement` — código completo, sem placeholder, sem "// resto igual"
+
+### GSAP (só em projeto web que usa GSAP)
+`animate` decide o motion — se anima, qual propriedade, curva, duração. As skills abaixo
+são a referência de API pra escrever esse motion em GSAP. Consultar sob demanda, não
+enfileirar todas.
+
+Se a linguagem visual escolhida foi `gpt-taste`, `gsap-core` + `gsap-scrolltrigger` são
+obrigatórias — ela exige ScrollTrigger com pin/stack/scrub.
+
+| Skill | Quando |
+|-------|--------|
+| `gsap-core` | base sempre: `to/from/fromTo`, easing, stagger, `matchMedia` (responsivo + reduced-motion) |
+| `gsap-timeline` | sequenciar mais de uma animação — position parameter, nesting, playback |
+| `gsap-scrolltrigger` | scroll-linked, parallax, pin, scrub |
+| `gsap-plugins` | Flip, Draggable, SplitText, ScrollSmoother, Observer, CustomEase, SVG |
+| `gsap-react` | projeto React/Next — `useGSAP`, refs, `gsap.context()`, cleanup no unmount |
+| `gsap-frameworks` | projeto Vue/Nuxt/Svelte — lifecycle, escopo de seletor, cleanup |
+| `gsap-utils` | `clamp`, `mapRange`, `random`, `snap`, `toArray`, `wrap` |
+| `gsap-performance` | animação com jank, travando, abaixo de 60fps |
+
+React ou Next → puxar `gsap-react` junto com `gsap-core` desde o começo: cleanup no unmount
+é onde a maior parte dos bugs de GSAP em React aparece, e refazer depois custa mais.
+
+GSAP é web. Em React Native / Expo não se aplica — o motion lá é Reanimated.
 
 ## Fase 4 — Redesign de projeto existente (só quando for redesign)
 - `redesign-existing-projects` — auditar o design atual, achar padrões genéricos de IA, elevar sem quebrar funcionalidade
