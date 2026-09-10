@@ -16,7 +16,11 @@ Se uma skill não estiver instalada no projeto, siga sem ela — não bloqueie.
 Escolher UMA linguagem visual pro projeto (nunca misturar):
 - `minimalist-ui` — editorial, monocromático quente, bento flat, zero gradiente
 - `industrial-brutalist-ui` — grid rígido, terminal militar, estética blueprint
+- `gpt-taste` — tipografia editorial larga, bento sem gaps, AIDA, scroll cinematográfico (GSAP pin/stack/scrub)
 - senão, seguir a direção que a `design-taste-frontend` inferiu do brief
+
+Essas três são linguagens visuais completas e mutuamente exclusivas — a escolha é aqui,
+na fase 1, não na hora de implementar.
 
 Saída da fase 1: um resumo curto da direção (paleta, tipografia, escala, motion, linguagem visual) antes de codar.
 
@@ -27,7 +31,7 @@ Saída da fase 1: um resumo curto da direção (paleta, tipografia, escala, moti
 - `image-to-code` — quando o usuário fornecer screenshot pra reproduzir
 
 ## Fase 3 — Implementação
-- `gpt-taste` — tipografia editorial larga, bento sem gaps, GSAP ScrollTrigger (pin/stack/scrub), espaçamento generoso entre seções
+- `gpt-taste` — SÓ se foi a linguagem visual escolhida na fase 1; senão pular (colide com as outras duas)
 - `animate` — decidir se anima, qual propriedade, curva, duração, interrupção, saída
 - `apple-design` — gestos, spring, materiais translúcidos, momentum, reduced-motion
 - `ask-sonner` — quando/como usar toasts (lib Sonner)
@@ -35,11 +39,27 @@ Saída da fase 1: um resumo curto da direção (paleta, tipografia, escala, moti
 
 ## Fase 4 — Redesign de projeto existente (só quando for redesign)
 - `redesign-existing-projects` — auditar o design atual, achar padrões genéricos de IA, elevar sem quebrar funcionalidade
-- `improve-animations` / `review-animations` / `find-animation-opportunities` — auditoria de motion
+
+Motion em projeto existente — as três skills abaixo são READ-ONLY: produzem lista ou plano,
+nenhuma delas aplica o código. Escolher pelo escopo:
+
+| Skill | Quando | Entrega |
+|-------|--------|---------|
+| `find-animation-opportunities` | nada anima ainda, quer saber o que vale animar | lista de oportunidades com valores exatos |
+| `improve-animations` | já tem motion espalhado, quer roadmap do codebase inteiro | auditoria priorizada + planos de implementação |
+| `review-animations` | quer crítica de um diff ou componente específico | review apontando o que está errado |
+
+Sempre voltar à fase 3 pra implementar o que elas apontaram — a fase 4 termina em plano, não em código.
+
+## Apoio (fora do pipeline — consultar sob demanda, não é fase)
+- `animation-vocabulary` — o usuário descreveu um efeito sem saber o nome ("aquele treco que
+  quica quando abre") e você precisa do termo exato antes de escolher a skill de motion certa
 
 ## Regras
 - Fase 1 é obrigatória antes de criar componentes.
 - Em projeto novo, rodar `/impeccable init` uma vez pra configurar contexto de design.
 - Skills de imagem (`imagegen-*`, `brandkit`) não escrevem código — só referência.
-- Nunca misturar `minimalist-ui` com `industrial-brutalist-ui` no mesmo projeto.
+- Nunca misturar `minimalist-ui`, `industrial-brutalist-ui` e `gpt-taste` no mesmo projeto —
+  escolher uma na fase 1 e descartar as outras duas.
+- Fase 4 é read-only: auditoria de motion entrega plano, quem implementa é a fase 3.
 - Skill ausente no projeto → seguir sem ela.
