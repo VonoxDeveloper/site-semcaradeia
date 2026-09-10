@@ -7,11 +7,13 @@ usa em qualquer projeto/computador.
 ## O que tem
 
 ```
-skills/                    27 skills (vendored — não precisa de rede pra instalar)
+skills/                    35 skills (vendored — não precisa de rede pra instalar)
   ship-ui/                 orquestrador: chama as outras na ordem direção→ref→impl→redesign
   design-taste-frontend/   anti-slop pra landing/portfólio/redesign
   high-end-visual-design/  fontes, espaçamento, sombras, cards "caros"
   impeccable/              auditoria de UX/hierarquia/a11y + detector via hook
+  gsap-*/                  8 skills oficiais da GreenSock: core, timeline, scrolltrigger,
+                           plugins, react, frameworks, utils, performance
   gpt-taste/ animate/ apple-design/ minimalist-ui/ industrial-brutalist-ui/
   imagegen-frontend-web/ imagegen-frontend-mobile/ brandkit/ image-to-code/
   redesign-existing-projects/ improve-animations/ review-animations/ ...
@@ -79,5 +81,7 @@ Só isso. Tudo é self-contained no repo.
 - `emilkowalski/skills` — Emil Kowalski
 - `Leonxlnx/taste-skill` — Leon
 - `impeccable` — instalado via `npx impeccable`
+- `gsap-*` — [greensock/gsap-skills](https://github.com/greensock/gsap-skills), skills oficiais
+  da GreenSock (MIT, © 2026 GreenSock)
 
 Skills rodam com permissão total do agente. Revise antes de usar.
